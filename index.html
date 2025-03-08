@@ -30,7 +30,7 @@
 
         header {
             background: linear-gradient(45deg, #3a7bd5, #3a6073);
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -45,32 +45,52 @@
         }
 
         .menu-toggle {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: #ff5f6d;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            z-index: 1000;
-            transition: background 0.3s ease;
-        }
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 45px; /* Bigger button */
+    height: 35px;
+    background: none; /* No red background */
+    border: none; /* No border */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1000;
+}
 
-        .menu-toggle:hover {
-            background: #ff2e4d;
-        }
+.menu-toggle div {
+    width: 100%;
+    height: 6px; /* Thicker lines */
+    background: #ffffff; /* Dark color */
+    border-radius: 5px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Menu Toggle Animation */
+.menu-toggle.active div:nth-child(1) {
+    transform: translateY(12px) rotate(45deg);
+}
+
+.menu-toggle.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active div:nth-child(3) {
+    transform: translateY(-12px) rotate(-45deg);
+}
+
+
 
         .menu {
             position: fixed;
             left: -250px;
             top: 0;
-            width: 250px;
-            height: 100%;
+            width: 190px;
+            height: 250%;
             background: rgba(0, 0, 0, 0.8);
             transition: left 0.3s ease;
-            padding-top: 60px;
+            padding-top: 80px;
         }
 
         .menu.active {
@@ -78,16 +98,22 @@
         }
 
         .menu button {
-            display: block;
-            background: none;
-            color: white;
-            border: none;
-            padding: 15px;
-            text-align: left;
-            width: 100%;
-            font-size: 18px;
-            cursor: pointer;
-        }
+    display: flex;
+    align-items: center;
+    background: none;
+    color: white;
+    border: none;
+    padding: 9px;
+    text-align: left;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.menu button i {
+    margin-right: 8px;
+    font-size: 18px;
+}
 
         .menu button:hover {
             background: rgba(255, 255, 255, 0.2);
@@ -117,7 +143,7 @@
             font-size: 18px;
             font-weight: bold;
             transition: transform 0.3s ease, background 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(231, 71, 71, 0.2);
             cursor: pointer;
         }
 
@@ -131,21 +157,43 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
-        .service-description {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            text-align: center;
-            font-size: 16px;
-            display: none;
-        }
-
+    .service-description {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    text-align: center;
+    font-size: 15px;
+    display: none;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
 
 
         section.active {
             display: block;
         }
+
+        #about {
+    text-align: center;
+    padding: 20px;
+}
+
+#about h2 {
+    font-size: 20px; /* Smaller text */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#about p {
+    font-size: 14px; /* Smaller text */
+    color: #ffffff;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
 
         #about img {
             border-radius: 50%;
@@ -169,18 +217,18 @@
 
         #aboutMe {
         text-align: center;
-        padding: 50px 20px;
+        padding: 30px 20px;
         background: linear-gradient(120deg, #1e3c72, #2a5298);
         color: white;
         border-radius: 15px;
         box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-        margin: 20px auto;
-        width: 90%;
-        max-width: 800px;
+        margin: 40px auto;
+        width: 80%;
+        max-width: 700px;
     }
 
     .about-container h2 {
-        font-size: 2em;
+        font-size: 20px;
         margin-bottom: 10px;
     }
 
@@ -191,13 +239,36 @@
     }
 
     .about-box {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-box ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+}
+
+.about-box li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.about-box li strong {
+    flex: 1;
+}
 
     .about-box:hover {
         transform: translateY(-5px);
@@ -232,7 +303,7 @@
         border-radius: 10px;
         text-align: center;
         transition: transform 0.3s ease, background 0.3s ease;
-        width: 120px;
+        width: 100px;
         cursor: pointer;
     }
 
@@ -262,38 +333,33 @@
         }
 
         .certificates-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 20px;
-    }
-
-    .certificate {
-        background: rgba(255, 255, 255, 0.2);
-        padding: 15px;
-        border-radius: 10px;
-        text-align: center;
-        width: 250px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .certificate img {
-        width: 100%;
-        border-radius: 10px;
-    }
-
-    .certificate p {
-        margin-top: 10px;
-        font-size: 16px;
-        font-weight: bold;
-    }
-
-    .certificate:hover {
-    transform: scale(1.3); /* Increase size on hover */
-    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px; /* Adjust spacing between certificates */
+    overflow: hidden;
 }
+
+.certificate {
+    opacity: 0;  /* Initially hidden */
+    transform: scale(0.8);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.certificate img {
+    width: 80%; /* Adjust size as needed */
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Bulge Animation */
+.certificate.active {
+    opacity: 1;
+    transform: scale(1.1); /* Slightly enlarge for the bulge effect */
+}
+
+
 
 .contact-section {
     text-align: center;
@@ -367,8 +433,6 @@
     display: block;
 }
 
-
-
     </style>
 </head>
 
@@ -376,20 +440,23 @@
     <header>
         <h1>JERWIN ROMERO</h1>
         <p><strong><u>Computer Engineer</u></strong></p>
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
     </header>
 
     <nav class="menu">
-        <button onclick="showSection('about')">Home</button>
-        <button onclick="showSection('aboutMe')">About Me</button>
-        <button onclick="showSection('certificates')">Certificates</button>
-        <button onclick="showSection('services')">Services</button>
-        <button onclick="showSection('contact')">Contact</button>
+        <button onclick="showSection('about')"><i class="fas fa-home"></i> Home</button>
+        <button onclick="showSection('aboutMe')"><i class="fas fa-user"></i> About Me</button>
+        <button onclick="showSection('certificates')"><i class="fas fa-certificate"></i> Certificates</button>
+        <button onclick="showSection('services')"><i class="fas fa-briefcase"></i> Services</button>
+        <button onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</button>
     </nav>
 
     <section id="about" class="active">
         <img src="pic1.jpg" alt="Your Photo">
-        <p class="animated-text">Hello! I am JERWIN ROMERO, a COMPUTER ENGINEER.</p>
         <h2 class="animated-text">Welcome to My Personal Website!</h2>
         <p class="animated-text">Here you will find information about my skills, achievements, services and interests. Feel free to explore and get in touch!</p>
     </section>
@@ -403,8 +470,8 @@
                 <h3>💡 What I Do</h3>
                 <ul>
                     <li>🔹 <strong>Software Development</strong> – Building efficient and scalable software solutions.</li>
-                    <li>🔹 <strong>Web Development</strong> – Crafting modern, responsive, and user-friendly websites.</li>
-                    <li>🔹 <strong>IoT & Embedded Systems</strong> – Designing smart systems for automation and real-world applications.</li>
+                    <li>🔹 <strong>Web Development</strong>      – Crafting modern, responsive, and user-friendly websites.</li>
+                    <li>🔹<strong>IoT & Embedded Systems</strong>– Designing smart systems for automation and real-world applications.</li>
                     <li>🔹 <strong>Technical Consulting</strong> – Providing expert guidance on software, hardware, and system integration.</li>
                 </ul>
             </div>
@@ -441,48 +508,20 @@
         <h2>My Certificates</h2>
         <p>Here are some of my certifications and achievements.</p>
         <div class="certificates-container">
-            <div class="certificate">
-                <img src="C1.jpg" alt="Certificate 1">
-               
-            </div>
-            <div class="certificate">
-                <img src="C2.jpg" alt="Certificate 2">
-                
-            </div>
-            <div class="certificate">
-                <img src="C3.jpg" alt="Certificate 3">
-                
-            </div>
-        <div class="certificate">
-            <img src="C4.jpg" alt="Certificate 1">
-            
+            <div class="certificate"><img src="C1.jpg" alt="Certificate 1"></div>
+            <div class="certificate"><img src="C2.jpg" alt="Certificate 2"></div>
+            <div class="certificate"><img src="C3.jpg" alt="Certificate 3"></div>
+            <div class="certificate"><img src="C4.jpg" alt="Certificate 4"></div>
+            <div class="certificate"><img src="C5.jpg" alt="Certificate 5"></div>
+            <div class="certificate"><img src="C6.jpg" alt="Certificate 6"></div>
+            <div class="certificate"><img src="C7.jpg" alt="Certificate 7"></div>
+            <div class="certificate"><img src="C8.jpg" alt="Certificate 8"></div>
+            <div class="certificate"><img src="C9.jpg" alt="Certificate 9"></div>
+            <div class="certificate"><img src="C10.jpg" alt="Certificate 10"></div>
         </div>
-        <div class="certificate">
-            <img src="C5.jpg" alt="Certificate 2">
-            
-        </div>
-        <div class="certificate">
-            <img src="C6.jpg" alt="Certificate 3">
-            
-        </div>
-    <div class="certificate">
-        <img src="C7.jpg" alt="Certificate 1">
-        
-    </div>
-    <div class="certificate">
-        <img src="C8.jpg" alt="Certificate 2">
-        
-    </div>
-    <div class="certificate">
-        <img src="C9.jpg" alt="Certificate 3">
-        
-    </div>
-<div class="certificate">
-    <img src="C10.jpg" alt="Certificate 3">
-   
-</div>
-</div>
     </section>
+    
+    
 
     <section id="contact" class="contact-section">
         <h2>Contact Me</h2>
@@ -567,7 +606,10 @@
 
         function toggleMenu() {
     const menu = document.querySelector('.menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+
     menu.classList.toggle('active');
+    menuToggle.classList.toggle('active'); // Add animation effect to the toggle button
 }
 
 function showSection(sectionId) {
@@ -575,10 +617,12 @@ function showSection(sectionId) {
         section.classList.remove('active');
     });
     document.getElementById(sectionId).classList.add('active');
-    
+
     // Close menu after selecting an option
     document.querySelector('.menu').classList.remove('active');
+    document.querySelector('.menu-toggle').classList.remove('active'); // Ensure the menu button resets
 }
+
 
 function animateText() {
     document.querySelectorAll('.animated-text').forEach((element) => {
@@ -603,6 +647,19 @@ function startLoopingAnimation() {
 
 window.onload = startLoopingAnimation;
 
+document.addEventListener("DOMContentLoaded", function () {
+    let availButton = document.getElementById("availServiceBtn");
+
+    if (availButton) {
+        availButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevents default jump behavior
+            goToContact();
+        });
+    } else {
+        console.error("❌ Avail Service button not found!");
+    }
+});
+
 function showDescription(service) {
     let descriptionText = {
         software: "I develop custom software solutions, applications, and automation tools.",
@@ -612,14 +669,28 @@ function showDescription(service) {
     };
 
     let descriptionBox = document.getElementById("service-description");
-    descriptionBox.innerHTML = descriptionText[service];
+
+    if (!descriptionBox) {
+        console.error("❌ Service description container not found!");
+        return;
+    }
+
+    // Update service description
+    descriptionBox.innerHTML = `<p>${descriptionText[service]}</p>`;
+
+    // Apply initial animation styles
     descriptionBox.style.display = "block";
+    descriptionBox.style.opacity = "0";
+    descriptionBox.style.transform = "scale(0.9) translateY(15px)";
+    
+    setTimeout(() => {
+        descriptionBox.style.opacity = "1";
+        descriptionBox.style.transform = "scale(1) translateY(0)";
+        descriptionBox.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+    }, 50);
 }
 
-function showCertificates() {
-        showSection('certificates');
-    }
-    
+
 
     document.getElementById("contactForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent page refresh
@@ -644,6 +715,28 @@ function showCertificates() {
         }, 3000);
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const certificates = document.querySelectorAll(".certificate");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                } else {
+                    entry.target.classList.remove("active");
+                }
+            });
+        },
+        { threshold: 0.6 } // Trigger animation when 60% of the certificate is visible
+    );
+
+    certificates.forEach((cert) => observer.observe(cert));
+});
+
+
+
 
     </script>
     
