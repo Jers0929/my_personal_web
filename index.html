@@ -48,8 +48,8 @@
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 45px; /* Bigger button */
-    height: 35px;
+    width: 40px; /* Bigger button */
+    height: 30px;
     background: none; /* No red background */
     border: none; /* No border */
     cursor: pointer;
@@ -193,6 +193,8 @@
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.5;
+    word-break: normal; /* Prevents unnecessary breaking */
+    overflow-wrap: break-word; /* Ensures words break properly when needed */
 }
 
         #about img {
