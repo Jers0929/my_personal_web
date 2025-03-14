@@ -340,12 +340,16 @@
     align-items: center;
     gap: 50px; 
     overflow: hidden;
+    position: relative; /* Ensures it stays within its section */
+    z-index: 1; /* Keeps it behind the menu */
 }
 
 .certificate {
     opacity: 0;  
     transform: scale(0.8);
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    position: relative; /* Ensures it doesn’t overlap the menu */
+    z-index: 0; /* Keeps it behind menu items */
 }
 
 .certificate img {
@@ -355,11 +359,18 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-
 .certificate.active {
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.05); /* Slightly reduced to prevent menu overlap */
+    z-index: 0; /* Keeps it below menu */
 }
+
+/* Ensure the menu stays on top */
+.menu-toggle, .menu {
+    position: relative;
+    z-index: 2; /* Ensures the menu stays above the certificates */
+}
+
 
 
 
