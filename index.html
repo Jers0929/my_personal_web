@@ -448,13 +448,13 @@
 .skills-container {
     max-width: 600px;
     margin: 0 auto;
-    padding: 0 15px; /* Small padding for better spacing */
+    padding: 0 15px; 
 }
 
 .skill {
-    margin: 20px auto; /* Centering the skill elements */
+    margin: 20px auto; 
     text-align: left;
-    max-width: 500px; /* Limit width for a balanced look */
+    max-width: 500px; 
 }
 
 .skill span {
@@ -466,16 +466,15 @@
 
 .skill-bar {
     width: 100%;
-    max-width: 450px; /* Slightly reduced width for better fit */
+    max-width: 450px; 
     height: 20px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    margin: 0 auto; /* Centering */
+    margin: 0 auto; 
 }
 
-/* Skill Fill Bar */
 .skill-fill {
     height: 100%;
     width: 0;
@@ -489,15 +488,14 @@
     border-radius: 10px;
 }
 
-/* 📱 Mobile Optimization */
 @media (max-width: 768px) {
     .skill {
-        max-width: 100%; /* Ensures it adapts to smaller screens */
+        max-width: 100%; 
     }
 
     .skill-bar {
-        max-width: 95%; /* Keeps bars proportional */
-        height: 18px; /* Slightly smaller height */
+        max-width: 95%;
+        height: 18px;
     }
 
     .skill-fill {
@@ -512,8 +510,8 @@
     }
 
     .skill-bar {
-        max-width: 92%; /* Keeps it balanced on small screens */
-        height: 16px; /* Small adjustment */
+        max-width: 92%; 
+        height: 16px;
     }
 
     .skill-fill {
@@ -617,17 +615,15 @@
 
     <section id="contact" class="contact-section">
         <h2>Contact Me</h2>
-        <form id="contactForm" class="contact-form">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" placeholder="Your Message" required></textarea>
+        <form id="contactForm" class="contact-form" action="https://formsubmit.co/jerwinromero63@gmail.com" method="POST">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
             <button type="submit">Send</button>
         </form>
         <p>You can also reach me at:</p>
         <p id="confirmationMessage" class="popup"></p>
-        
-        
-        
+    
         <div class="social-links">
             <a href="https://www.facebook.com/jersrmr/" target="_blank" class="social-icon fb">
                 <i class="fab fa-facebook-f"></i>
@@ -639,8 +635,8 @@
                 <i class="fab fa-telegram-plane"></i>
             </a>
         </div>
-        
     </section>
+    
 
     <section id="services">
         <h2>My Services</h2>
@@ -727,6 +723,7 @@
     <footer>
         <p>&copy; 2025 Jerwin Romero.</p>
     </footer>
+
 
     <script>
         function animateText() {
@@ -845,30 +842,65 @@ function showDescription(service, event) {
 
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    emailjs.init("rd7-z0btKXLTHw6-D"); // Replace with your actual EmailJS public key
 
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent page refresh
+    let form = document.getElementById("contactForm");
+    let confirmationMessage = document.getElementById("confirmationMessage");
 
-    // Get form values
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let message = document.getElementById("message").value;
-
-    if (name && email && message) {
-        // Show confirmation message
-        let confirmation = document.getElementById("confirmationMessage");
-        confirmation.textContent = "Message Sent!";
-        confirmation.classList.add("active");
-
-        // Clear form fields
-        document.getElementById("contactForm").reset();
-
-        // Hide confirmation message after 3 seconds
-        setTimeout(() => {
-            confirmation.classList.remove("active");
-        }, 3000);
+    if (!form) {
+        console.error("Error: #contactForm not found in the DOM.");
+        return;
     }
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let name = document.querySelector("[name='name']").value.trim();
+        let email = document.querySelector("[name='email']").value.trim();
+        let message = document.querySelector("[name='message']").value.trim();
+
+        if (name && email && message) {
+            emailjs.send("service_wwdd0si", "template_ittw4to", {
+                from_name: name,
+                from_email: email,
+                email: "jerwinromero63@gmail.com", // Ensure this matches your EmailJS template field
+                message: message
+            })
+            .then(function(response) {
+                console.log("✅ Email sent successfully", response);
+                
+                // Show confirmation message
+                confirmationMessage.textContent = "✅ Message Sent Successfully!";
+                confirmationMessage.style.color = "green"; // Make it visible
+                confirmationMessage.style.display = "block"; // Show message
+                
+                // Clear the form fields
+                form.reset();
+
+                // Hide confirmation message after 5 seconds
+                setTimeout(() => {
+                    confirmationMessage.style.display = "none";
+                }, 5000);
+            })
+            .catch(function(error) {
+                console.error("❌ Failed to send email", error);
+                
+                // Show error message
+                confirmationMessage.textContent = "❌ Failed to send message. Please try again.";
+                confirmationMessage.style.color = "red";
+                confirmationMessage.style.display = "block";
+            });
+        } else {
+            alert("⚠️ Please fill in all fields.");
+        }
+    });
 });
+
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const certificates = document.querySelectorAll(".certificate");
@@ -924,8 +956,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
     </script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </body>
 
 </html>
